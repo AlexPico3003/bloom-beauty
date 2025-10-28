@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom Beauty</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    background: linear-gradient(135deg, #ffd6ec, #ffeaf5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background 1s ease;
+  }
+
+  .container {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  img.logo {
+    width: 180px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  h1 {
+    color: #b30059;
+    font-size: 2.5em;
+    margin: 15px 0;
+  }
+
+  p {
+    color: #7a003c;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  button {
+    background: linear-gradient(45deg, #ff69b4, #ff85c1);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    margin: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+  }
+
+  /* Ocultar secciones */
+  .hidden { display: none; }
+
+  /* Estilos de registro */
+  .formulario {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    text-align: left;
+    width: 350px;
+  }
+
+  .formulario h2 {
+    text-align: center;
+    color: #b30059;
+    margin-bottom: 20px;
+  }
+
+  .formulario input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ffb6c1;
+  }
+
+  /* Sección de servicios */
+  .servicios {
+    animation: fadeIn 1s ease-in-out;
+    color: #4a0032;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  .servicios h2 {
+    color: #b30059;
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+
+  .tarjeta {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    display: inline-block;
+    width: 250px;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .tarjeta:hover {
+    transform: scale(1.05);
+  }
+
+  .profesionales {
+    margin-top: 30px;
+    background: #ffe6f2;
+    border-radius: 15px;
+    padding: 20px;
+  }
+
+  .profesionales h3 {
+    color: #b30059;
+  }
+
+  .footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #7a003c;
+  }
+</style>
+</head>
+<body>
+
+<!-- Página de inicio -->
+<div class="container" id="inicio">
+  <img src="WhatsApp Image 2025-10-27 at 7.24.24 PM.jpeg" alt="Logo Bloom Beauty" class="logo">
+  <h1>✨ Bloom Beauty ✨</h1>
+  <p>Donde la confianza florece y tu estilo brilla 🌸</p>
+  <button onclick="mostrarRegistro()">Registrarse</button>
+  <button onclick="mostrarServicios()">Siguiente</button>
+</div>
+
+<!-- Registro -->
+<div class="container hidden" id="registro">
+  <div class="formulario">
+    <h2>Registro</h2>
+    <input type="text" placeholder="Nombre completo">
+    <input type="email" placeholder="Correo electrónico">
+    <input type="password" placeholder="Contraseña">
+    <button onclick="mostrarServicios()">Registrar</button>
+  </div>
+</div>
+
+<!-- Servicios -->
+<div class="container hidden" id="servicios">
+  <div class="servicios">
+    <h2>🌸 Nuestros Servicios 🌸</h2>
+    <div class="tarjeta">
+      <h3>Corte de cabello</h3>
+      <p>Desde $25.000</p>
+      <p>Duración: 45 minutos</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Manicura y pedicura</h3>
+      <p>Desde $30.000</p>
+      <p>Duración: 1 hora</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Coloración y tintes</h3>
+      <p>Desde $60.000</p>
+      <p>Duración: 2 horas</p>
+    </div>
+
+    <div class="profesionales">
+      <h3>💇‍♀️ Nuestros Profesionales</h3>
+      <p>Contamos con expertos certificados con más de 5 años de experiencia.</p>
+      <p>Horario de atención: Lunes a sábado, 8:00 AM - 7:00 PM</p>
+    </div>
+
+    <div class="footer">
+      <p>Bloom Beauty © 2025 - Donde florece tu estilo 🌷</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function mostrarRegistro() {
+    document.getElementById("inicio").classList.add("hidden");
+    document.getElementById("registro").classList.remove("hidden");
+  }
+
+  function mostrarServicios() {
+    document.getElementById("inicio").classList.add("hidden");
+    document.getElementById("registro").classList.add("hidden");
+    document.getElementById("servicios").classList.remove("hidden");
+    document.body.style.background = "linear-gradient(135deg, #ffc0cb, #fff0f5)";
+  }
+</script>
+</body>
+</html>
