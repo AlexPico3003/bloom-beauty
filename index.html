@@ -1,352 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Bloom Beauty</title>
-  <meta name="description" content="Página demo para un salón de belleza: búsqueda de profesionales, productos, calificaciones y registro de clientes.">
-  <style>
-    :root{
-      --bg:#fff7fb;
-      --accent:#d63384; /* rosa fuerte */
-      --accent-2:#ff8fb1; /* rosa claro */
-      --text:#2b2b2b;
-      --card:#ffffff;
-      --muted:#6b6b6b;
-      --glass: rgba(255,255,255,0.7);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),#fff);min-height:100vh}
-    header{padding:28px 16px;text-align:center}
-    .logo{display:flex;gap:12px;align-items:center;justify-content:center}
-    .logo img{width:56px;height:56px;border-radius:12px;object-fit:cover;box-shadow:0 6px 20px rgba(214,51,132,0.15)}
-    .logo h1{margin:0;font-size:20px;letter-spacing:0.2px}
-
-    /* Search bar like Google but beauty themed */
-    .search-wrap{display:flex;justify-content:center;padding:18px 16px}
-    .search{
-      width:min(920px,96%);background:var(--card);border-radius:999px;padding:14px 18px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 30px rgba(0,0,0,0.06)
-    }
-    .search input{flex:1;border:0;outline:none;font-size:16px;background:transparent}
-    .search .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:0;color:white;padding:10px 16px;border-radius:999px;font-weight:600;cursor:pointer}
-
-    main{max-width:1200px;margin:26px auto;padding:0 16px}
-    .intro{display:flex;gap:18px;align-items:center}
-    .intro .hero{flex:1}
-    .intro .hero p{color:var(--muted);margin-top:6px}
-    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-    .chip{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:600;border:1px solid rgba(214,51,132,0.06);cursor:pointer}
-
-    /* Grid */
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:20px}
-    .card{background:linear-gradient(180deg,#fff, #fff);border-radius:12px;padding:14px;box-shadow:0 6px 20px rgba(35,31,32,0.04);border:1px solid rgba(0,0,0,0.04)}
-    .card .head{display:flex;gap:12px;align-items:center}
-    .avatar{width:72px;height:72px;border-radius:12px;object-fit:cover}
-    .name{font-weight:700}
-    .role{color:var(--muted);font-size:13px}
-    .rating{margin-left:auto;display:flex;align-items:center;gap:6px}
-    .rating .stars{color:gold}
-    .products{margin-top:10px;font-size:13px;color:var(--muted)}
-    .services{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-    .service-tag{background:#fff2f7;padding:6px 8px;border-radius:8px;border:1px solid rgba(214,51,132,0.06);font-size:13px}
-    .view-btn{margin-top:12px;display:inline-block;padding:8px 12px;border-radius:10px;border:0;background:transparent;color:var(--accent);cursor:pointer;font-weight:700}
-
-    /* modal */
-    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(12,12,12,0.45);z-index:40;padding:20px}
-    .modal .panel{background:linear-gradient(180deg,#fff,#fff);max-width:760px;width:100%;border-radius:12px;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,0.25)}
-    .modal h3{margin:0}
-    .close{background:#eee;border:0;padding:6px 10px;border-radius:8px;cursor:pointer}
-
-    /* registration */
-    .reg-form{max-width:420px;margin:0 auto;background:linear-gradient(180deg,#fff,#fff);padding:18px;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.12)}
-    .input{width:100%;padding:10px 12px;margin-top:8px;border-radius:8px;border:1px solid #eee}
-    .primary{display:block;width:100%;padding:10px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;margin-top:12px}
-
-    footer{margin-top:40px;text-align:center;color:var(--muted);padding-bottom:40px}
-
-    /* responsive */
-    @media (max-width:640px){.logo h1{font-size:16px}.avatar{width:64px;height:64px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom Beauty</title>
 <style>
- body {
-   background: #ffe4f5;
-   font-family: Arial, sans-serif;
- }
- .logo {
-   font-size: 2.5rem;
-   color: #c2185b;
-   text-align: center;
-   margin-top: 20px;
- }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    background: linear-gradient(135deg, #ffd6ec, #ffeaf5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background 1s ease;
+  }
+
+  .container {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  img.logo {
+    width: 180px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  h1 {
+    color: #b30059;
+    font-size: 2.5em;
+    margin: 15px 0;
+  }
+
+  p {
+    color: #7a003c;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  button {
+    background: linear-gradient(45deg, #ff69b4, #ff85c1);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    margin: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+  }
+
+  /* Ocultar secciones */
+  .hidden { display: none; }
+
+  /* Estilos de registro */
+  .formulario {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    text-align: left;
+    width: 350px;
+  }
+
+  .formulario h2 {
+    text-align: center;
+    color: #b30059;
+    margin-bottom: 20px;
+  }
+
+  .formulario input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ffb6c1;
+  }
+
+  /* Sección de servicios */
+  .servicios {
+    animation: fadeIn 1s ease-in-out;
+    color: #4a0032;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  .servicios h2 {
+    color: #b30059;
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+
+  .tarjeta {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    display: inline-block;
+    width: 250px;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .tarjeta:hover {
+    transform: scale(1.05);
+  }
+
+  .profesionales {
+    margin-top: 30px;
+    background: #ffe6f2;
+    border-radius: 15px;
+    padding: 20px;
+  }
+
+  .profesionales h3 {
+    color: #b30059;
+  }
+
+  .footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #7a003c;
+  }
 </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=400&q=60" alt="logo"/>
-      <div>
-        <h1 class="logo">🌸 Bloom Beauty 🌸</h1>
-        <div style="font-size:14px;color:var(--muted)">Reserva, busca y conoce a los profesionales y productos</div>
-      </div>
-    </div>
-  </header>
 
-  <!-- Search bar -->
-  <div class="search-wrap">
-    <div class="search" role="search">
-      <input id="q" placeholder="Busca por servicio, profesional o producto... (ej: peluquería, barbería, maquillaje, Kerastase)" aria-label="buscar" />
-      <button class="btn" id="searchBtn">Buscar</button>
+<!-- Página de inicio -->
+<div class="container" id="inicio">
+  <img src="WhatsApp Image 2025-10-27 at 7.24.24 PM.jpeg" alt="Logo Bloom Beauty" class="logo">
+  <h1>✨ Bloom Beauty ✨</h1>
+  <p>Donde la confianza florece y tu estilo brilla 🌸</p>
+  <button onclick="mostrarRegistro()">Registrarse</button>
+  <button onclick="mostrarServicios()">Siguiente</button>
+</div>
+
+<!-- Registro -->
+<div class="container hidden" id="registro">
+  <div class="formulario">
+    <h2>Registro</h2>
+    <input type="text" placeholder="Nombre completo">
+    <input type="email" placeholder="Correo electrónico">
+    <input type="password" placeholder="Contraseña">
+    <button onclick="mostrarServicios()">Registrar</button>
+  </div>
+</div>
+
+<!-- Servicios -->
+<div class="container hidden" id="servicios">
+  <div class="servicios">
+    <h2>🌸 Nuestros Servicios 🌸</h2>
+    <div class="tarjeta">
+      <h3>Corte de cabello</h3>
+      <p>Desde $25.000</p>
+      <p>Duración: 45 minutos</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Manicura y pedicura</h3>
+      <p>Desde $30.000</p>
+      <p>Duración: 1 hora</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Coloración y tintes</h3>
+      <p>Desde $60.000</p>
+      <p>Duración: 2 horas</p>
+    </div>
+
+    <div class="profesionales">
+      <h3>💇‍♀️ Nuestros Profesionales</h3>
+      <p>Contamos con expertos certificados con más de 5 años de experiencia.</p>
+      <p>Horario de atención: Lunes a sábado, 8:00 AM - 7:00 PM</p>
+    </div>
+
+    <div class="footer">
+      <p>Bloom Beauty © 2025 - Donde florece tu estilo 🌷</p>
     </div>
   </div>
+</div>
 
-  <main>
-    <section class="intro">
-      <div class="hero">
-        <strong>Explora nuestros servicios y profesionales</strong>
-        <p>Escribe en la barra de búsqueda y el catálogo mostrará todos los profesionales que coincidan con tu término —calificación, productos que usan y servicios ofrecidos.</p>
-        <div class="filters">
-          <div class="chip" onclick="applyFilter('Peluquería')">Peluquería</div>
-          <div class="chip" onclick="applyFilter('Barbería')">Barbería</div>
-          <div class="chip" onclick="applyFilter('Maquillaje')">Maquillaje</div>
-          <div class="chip" onclick="applyFilter('Uñas')">Uñas</div>
-          <div class="chip" onclick="applyFilter('Coloración')">Coloración</div>
-        </div>
-      </div>
-      <div style="width:280px">
-        <div class="reg-form" id="profileCard">
-          <strong id="welcomeTitle">Bienvenido</strong>
-          <div id="welcomeMsg" style="color:var(--muted);margin-top:6px">Regístrate para reservar y recibir ofertas</div>
-          <button class="primary" onclick="openRegister()" id="openRegBtn">Registrarse / Entrar</button>
-        </div>
-      </div>
-    </section>
+<script>
+  function mostrarRegistro() {
+    document.getElementById("inicio").classList.add("hidden");
+    document.getElementById("registro").classList.remove("hidden");
+  }
 
-    <!-- Results grid -->
-    <section>
-      <div id="resultsCount" style="margin-top:16px;color:var(--muted)"></div>
-      <div class="grid" id="catalog"></div>
-    </section>
-
-    <footer>
-      © Bloom Beauty • Creado como demo — interfaz sencilla y enfocada en belleza
-    </footer>
-  </main>
-
-  <!-- detail modal -->
-  <div id="detailModal" class="modal" style="display:none">
-    <div class="panel">
-      <div style="display:flex;gap:12px;align-items:center">
-        <img id="mAvatar" src="" alt="avatar" style="width:96px;height:96px;border-radius:12px;object-fit:cover" />
-        <div style="flex:1">
-          <h3 id="mName">Nombre</h3>
-          <div id="mRole" style="color:var(--muted)"></div>
-          <div id="mRating" style="margin-top:8px"></div>
-        </div>
-        <div style="text-align:right">
-          <button class="close" onclick="closeModal()">Cerrar</button>
-        </div>
-      </div>
-      <hr style="margin:12px 0;border:none;border-top:1px solid #f0f0f0" />
-      <div style="display:flex;gap:18px;flex-wrap:wrap">
-        <div style="flex:1;min-width:240px">
-          <h4>Servicios</h4>
-          <div id="mServices"></div>
-          <h4 style="margin-top:10px">Productos que usa</h4>
-          <div id="mProducts" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-        </div>
-        <div style="width:260px;min-width:200px">
-          <h4>Reservar / Contacto</h4>
-          <p style="color:var(--muted);font-size:14px">Para reservar, inicia sesión y contáctanos por WhatsApp o vía formulario.</p>
-          <button class="primary" style="width:100%" onclick="reserve()">Reservar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- registration modal (forced on first visit) -->
-  <div id="registerModal" class="modal" style="display:none">
-    <div class="panel">
-      <h3>Registro / Inicio de sesión</h3>
-      <p style="color:var(--muted)">Crea una cuenta para reservar y guardar tus preferencias.</p>
-      <div style="margin-top:8px">
-        <input id="rname" class="input" placeholder="Tu nombre" />
-        <input id="remail" class="input" placeholder="Correo electrónico" />
-        <input id="rpass" class="input" placeholder="Contraseña" type="password" />
-        <button class="primary" onclick="registerUser()">Crear cuenta</button>
-        <button class="close" style="margin-top:8px;width:100%" onclick="closeRegister()">Cerrar</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Demo dataset de profesionales
-    const professionals = [
-      {
-        id:1,
-        name:'Mariana López',
-        role:'Estilista - Peluquería / Colorista',
-        avatar:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60',
-        rating:4.9,
-        services:['Peluquería','Coloración','Tintes','Alisado'],
-        products:['Kerastase','L'Oréal Professionnel','Olaplex']
-      },
-      {
-        id:2,
-        name:'Joaquín "El Barbero"',
-        role:'Barbero Profesional',
-        avatar:'https://images.unsplash.com/photo-1545996124-1b24b2c2d3a1?auto=format&fit=crop&w=400&q=60',
-        rating:4.7,
-        services:['Barbería','Cortes clásicos','Afeitado con navaja'],
-        products:['American Crew','Proraso']
-      },
-      {
-        id:3,
-        name:'Camila Rojas',
-        role:'Maquilladora Profesional',
-        avatar:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=60',
-        rating:4.95,
-        services:['Maquillaje social','Maquillaje para novias','Airbrush'],
-        products:['MAC','NARS','Urban Decay']
-      },
-      {
-        id:4,
-        name:'Sofía Márquez',
-        role:'Manicurista y Nail Artist',
-        avatar:'https://images.unsplash.com/photo-1586015555117-2d12f9f2f4d3?auto=format&fit=crop&w=400&q=60',
-        rating:4.6,
-        services:['Uñas gel','Uñas acrílicas','Diseños'],
-        products:['CND','Essie']
-      },
-      {
-        id:5,
-        name:'Andrés Fuentes',
-        role:'Técnico en tratamientos capilares',
-        avatar:'https://images.unsplash.com/photo-1544006659-f0b21884ce1d?auto=format&fit=crop&w=400&q=60',
-        rating:4.5,
-        services:['Tratamientos','Keratin','Scalp care'],
-        products:['Olaplex','Kérastase']
-      }
-    ];
-
-    // Utilities
-    const catalog = document.getElementById('catalog');
-    const resultsCount = document.getElementById('resultsCount');
-    const qInput = document.getElementById('q');
-    const registerModal = document.getElementById('registerModal');
-
-    function renderList(list){
-      catalog.innerHTML = '';
-      if(!list.length){
-        resultsCount.textContent = 'No se encontraron profesionales para tu búsqueda.';
-        return;
-      }
-      resultsCount.textContent = `${list.length} profesional(es) encontrado(s)`;
-      for(const p of list){
-        const el = document.createElement('article');
-        el.className = 'card';
-        el.innerHTML = `
-          <div class="head">
-            <img class="avatar" src="${p.avatar}" alt="${p.name}" />
-            <div>
-              <div class="name">${p.name}</div>
-              <div class="role">${p.role}</div>
-              <div class="products">Productos: ${p.products.slice(0,3).join(', ')}</div>
-            </div>
-            <div class="rating"><div class="stars">${renderStars(p.rating)}</div><div style="font-weight:700">${p.rating.toFixed(1)}</div></div>
-          </div>
-          <div class="services">
-            ${p.services.map(s=>`<div class="service-tag">${s}</div>`).join('')}
-          </div>
-          <button class="view-btn" onclick='openDetail(${p.id})'>Ver perfil</button>
-        `;
-        catalog.appendChild(el);
-      }
-    }
-
-    function renderStars(r){
-      const full = Math.floor(r);
-      let out='';
-      for(let i=0;i<full;i++) out += '★';
-      if(r-full >= 0.5) out += '☆';
-      return out;
-    }
-
-    function openDetail(id){
-      const p = professionals.find(x=>x.id===id);
-      if(!p) return;
-      document.getElementById('mAvatar').src = p.avatar;
-      document.getElementById('mName').textContent = p.name;
-      document.getElementById('mRole').textContent = p.role;
-      document.getElementById('mRating').innerHTML = `<strong>${p.rating.toFixed(2)}</strong> • ${renderStars(p.rating)}`;
-      document.getElementById('mServices').innerHTML = p.services.map(s=>`<div class="service-tag">${s}</div>`).join(' ');
-      document.getElementById('mProducts').innerHTML = p.products.map(prod=>`<div style="padding:8px;border-radius:8px;border:1px solid #f0f0f0;background:#fff;min-width:110px;text-align:center">${prod}</div>`).join(' ');
-      document.getElementById('detailModal').style.display='flex';
-    }
-    function closeModal(){document.getElementById('detailModal').style.display='none'}
-
-    // Search behavior: when user types OR clicks Buscar, filter professionals to show full catalog matching the term
-    function search(){
-      const q = (qInput.value||'').trim().toLowerCase();
-      if(!q) return renderList(professionals);
-      const results = professionals.filter(p=>{
-        if(p.name.toLowerCase().includes(q)) return true;
-        if(p.role.toLowerCase().includes(q)) return true;
-        if(p.services.join(' ').toLowerCase().includes(q)) return true;
-        if(p.products.join(' ').toLowerCase().includes(q)) return true;
-        return false;
-      });
-      renderList(results);
-    }
-
-    document.getElementById('searchBtn').addEventListener('click', ()=>{ search(); });
-    qInput.addEventListener('keydown', e=>{ if(e.key==='Enter') search(); });
-
-    function applyFilter(term){ qInput.value = term; search(); }
-
-    // Registration flow (simple localStorage demo)
-    function openRegister(){ registerModal.style.display='flex'; }
-    function closeRegister(){ registerModal.style.display='none'; }
-    function registerUser(){
-      const name = document.getElementById('rname').value.trim();
-      const email = document.getElementById('remail').value.trim();
-      const pass = document.getElementById('rpass').value;
-      if(!name || !email || !pass){ alert('Por favor completa todos los campos.'); return; }
-      const user = {name,email,created:Date.now()};
-      localStorage.setItem('studio_user', JSON.stringify(user));
-      updateWelcome();
-      closeRegister();
-      alert('Cuenta creada. ¡Bienvenido, '+name+'!');
-    }
-    function updateWelcome(){
-      const raw = localStorage.getItem('studio_user');
-      if(!raw) return;
-      const user = JSON.parse(raw);
-      document.getElementById('welcomeTitle').textContent = `Hola, ${user.name}`;
-      document.getElementById('welcomeMsg').textContent = 'Puedes reservar, dejar reseñas y recibir promociones.';
-      document.getElementById('openRegBtn').textContent = 'Mi cuenta';
-    }
-
-    // Reservation placeholder
-    function reserve(){
-      const raw = localStorage.getItem('studio_user');
-      if(!raw){ alert('Debes iniciar sesión o registrarte para reservar.'); openRegister(); return; }
-      const pName = document.getElementById('mName').textContent;
-      alert('Has solicitado una reserva con '+pName+'. Nuestro equipo te contactará al correo registrado.');
-      closeModal();
-    }
-
-    // On first load, show registration modal to force registration (as requested)
-    window.addEventListener('load', ()=>{
-      renderList(professionals);
-      updateWelcome();
-      // Show register modal only if no user in localStorage
-      if(!localStorage.getItem('studio_user')){
-        // forced on first entry
-        document.getElementById('registerModal').style.display='flex';
-      }
-    });
-
-  </script>
+  function mostrarServicios() {
+    document.getElementById("inicio").classList.add("hidden");
+    document.getElementById("registro").classList.add("hidden");
+    document.getElementById("servicios").classList.remove("hidden");
+    document.body.style.background = "linear-gradient(135deg, #ffc0cb, #fff0f5)";
+  }
+</script>
 </body>
 </html>
+
 
